@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link href="css/d3.geomap.css" rel="stylesheet">
+        <script src="vendor/d3.geomap.dependencies.min.js"></script>
+        <script src="js/d3.geomap.js"></script>
+    </head>
+    <body>
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="optionsRadios" onchange="radioChange()" id="optionsRadios1" value="1" checked>
+                1 Map
+            </label>
+        </div>
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="optionsRadios" onchange="radioChange()" id="optionsRadios2"  value="2">
+                2 Map
+            </label>
+        </div>
+        <div class="row">
+                <div id="map" class="col-md-12"></div>
+        </div>
+        <div class="row">
+            <div id="map1" class="col-md-6"></div>
+            <div id="map2" class="col-md-6"></div>
+        </div>
+        
+    </body>
+    <script type="text/javascript">
+    //document.querySelector('input[name="optionsRadios"]:checked').value;
+    setOneMap();
+    function setOneMap(){
+        var format = function(d) {
+                d = d / 1000;
+                return d3.format(',.02f')(d) + 'T';
+            }
+            var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
+            var scheme = 'Reds' || 'YlGnBu';
+            var width=1336, height=650;
+            var map = d3.geomap.choropleth()
+            .geofile('topojson/world/countries.json')
+            .width(width)
+            .height(height)
+            .colors(colorbrewer[scheme][steps])
+            .column('price')
+            .scale([width / 5.8])
+            .translate([width / 2, height / 2])
+            .format(format)
+            .legend(true)
+            .unitId('id');
+
+        d3.csv('data/sumPriceCountry.csv', function(error, data) {
+            d3.select('#map')
+                .datum(data)
+                .call(map.draw, map);
+
+    
+        });
+    }
+    function setTwoMap(){
+        var format = function(d) {
+                d = d / 1000;
+                return d3.format(',.02f')(d) + 'T';
+            }
+            var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
+            var scheme = 'Reds' || 'YlGnBu';
+            var width=650, height=650;
+            var map = d3.geomap.choropleth()
+            .geofile('topojson/world/countries.json')
+            .width(width)
+            .height(height)
+            .colors(colorbrewer[scheme][steps])
+            .column('price')
+            .scale([width / 5.8])
+            .translate([width / 2, height / 2])
+            .format(format)
+            .legend(true)
+            .unitId('id');
+
+        d3.csv('data/sumPriceCountry.csv', function(error, data) {
+            d3.select('#map1')
+                .datum(data)
+                .call(map.draw, map);
+
+    
+        });
+
+        var map2 = d3.geomap.choropleth()
+            .geofile('topojson/world/countries.json')
+            .width(width)
+            .height(height)
+            .colors(colorbrewer[scheme][steps])
+            .column('price')
+            .scale([width / 5.8])
+            .translate([width / 2, height / 2])
+            .format(format)
+            .legend(true)
+            .unitId('id');
+
+        d3.csv('data/sumPriceCountry.csv', function(error, data) {
+            d3.select('#map2')
+                .datum(data)
+                .call(map2.draw, map2);
+
+    
+        });
+    }
+
+    function radioChange(){
+        d3.selectAll('svg').remove();
+        if(document.querySelector('input[name="optionsRadios"]:checked').value==="1"){
+            setOneMap();
+        }
+        else{
+            setTwoMap();
+        }
+
+    }
+   
+
+
+    </script>
+</html>

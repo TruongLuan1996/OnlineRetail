@@ -1,0 +1,31 @@
+id,country,price
+AUS,Australia,1444.04
+AUT,Austria,44.36
+BHR,Bahrain,205.74
+BEL,Belgium,277.08
+NULL,Channel Islands,359.9
+CYN,Cyprus,552.84
+CZE,Czech Republic,119.02
+DNK,Denmark,187.2
+NULL,EIRE,20159.29
+NULL,European Community,8.5
+FIN,Finland,217.26
+FRA,France,12083.12
+DEU,Germany,6989.46
+GRC,Greece,50
+HKG,Hong Kong,5574.76
+ISR,Israel,227.44
+ITA,Italy,592.73
+JPN,Japan,1958.82
+NULL,Malta,189.31
+NLD,Netherlands,784.8
+NOR,Norway,1001.98
+POL,Poland,121.51
+PRT,Portugal,4373.84
+SAU,Saudi Arabia,14.75
+SGP,Singapore,12158.9
+ESP,Spain,6757.75
+SWE,Sweden,1544.42
+CHE,Switzerland,704.55
+GBR,United Kingdom,611404.94
+USA,USA,1579.51

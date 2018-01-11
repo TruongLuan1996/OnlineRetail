@@ -55,20 +55,40 @@
           </style>
     </head>
     <body>
-        <div class="radio-inline">
-            <label>
-                <input type="radio" name="optionsRadios" onchange="radioChange()" id="optionsRadios1" value="1" checked>
-                1 Map
-            </label>
-        </div>
-        <div class="radio-inline">
-            <label>
-                <input type="radio" name="optionsRadios" onchange="radioChange()" id="optionsRadios2"  value="2">
-                2 Map
-            </label>
-        </div>
         <div class="row">
-                <div id="map" class="col-md-12"></div>
+                <div class="col-md-2">
+                    <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap1" value="1" checked>
+                                Success
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap2"  value="2">
+                                Cancel
+                            </label>
+                    </div>
+                </div>    
+            <div class="col-md-2">
+                    <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap1" value="1" checked>
+                                1 Map
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap2"  value="2">
+                                2 Map
+                            </label>
+                        </div>
+            </div>        
+        </div>
+
+          
+        <div class="row">
+            <div id="map" class="col-md-12"></div>
         </div>
         <div class="row">
             <div id="map1" class="col-md-6"></div>
@@ -78,7 +98,8 @@
     </body>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script type="text/javascript">
-   document.getElementById("optionsRadios1").checked=true
+   document.getElementById("numbermap1").checked=true
+   document.getElementById("statusmap1").checked=true
     setOneMap();
     function setOneMap(){
         var format = function(d) {
@@ -99,12 +120,20 @@
             .format(format)
             .legend(true)
             .unitId('id');
-
-        d3.csv('data/sumPriceCountry.csv', function(error, data) {
-            d3.select('#map')
-                .datum(data)
-                .call(map.draw, map);
-        });
+            if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
+                d3.csv('data/sumPriceCountry.csv', function(error, data) {
+                    d3.select('#map')
+                        .datum(data)
+                        .call(map.draw, map);
+                });
+            }
+            else{
+                d3.csv('data/sumPriceCountry_Cancel.csv', function(error, data) {
+                    d3.select('#map')
+                        .datum(data)
+                        .call(map.draw, map);
+                });
+            }
     }
     function setTwoMap(){
         var format = function(d) {
@@ -137,49 +166,52 @@
             .format(format)
             .legend(true)
             .unitId('id');
+            if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
+                d3.csv('data/sumPriceCountry.csv', function(error, data) {
+                    d3.select('#map1')
+                        .datum(data)
+                        .call(map.draw, map);
+                    
+                    d3.select('#map2')
+                    .datum(data)
+                    .call(map2.draw, map2);
 
-        d3.csv('data/sumPriceCountry.csv', function(error, data) {
-            d3.select('#map1')
-                .datum(data)
-                .call(map.draw, map);
             
-            d3.select('#map2')
-            .datum(data)
-            .call(map2.draw, map2);
+                });
+            }
+            else{
+                d3.csv('data/sumPriceCountry_Cancel.csv', function(error, data) {
+                    d3.select('#map1')
+                        .datum(data)
+                        .call(map.draw, map);
+                    
+                    d3.select('#map2')
+                    .datum(data)
+                    .call(map2.draw, map2);
 
-    
-        });
-
-        // var map2 = d3.geomap.choropleth()
-        //     .geofile('topojson/world/countries.json')
-        //     .width(width)
-        //     .height(height)
-        //     .colors(colorbrewer[scheme][steps])
-        //     .column('price')
-        //     .scale([width / 5.8])
-        //     .translate([width / 2, height / 2])
-        //     .format(format)
-        //     .legend(true)
-        //     .unitId('id');
-
-        // d3.csv('data/sumPriceCountry.csv', function(error, data) {
-        //     d3.select('#map2')
-        //         .datum(data)
-        //         .call(map2.draw, map2);
-
-    
-        // });
+            
+                });
+            }
     }
 
-    function radioChange(){
+    function numbermapChange(){
         d3.selectAll('svg').remove();
-        if(document.querySelector('input[name="optionsRadios"]:checked').value==="1"){
+        if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
             setOneMap();
         }
         else{
             setTwoMap();
         }
 
+    }
+    function statusmapChange(){
+        d3.selectAll('svg').remove();
+        if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
+            setOneMap();
+        }
+        else{
+            setTwoMap();
+        }
     }
    
 

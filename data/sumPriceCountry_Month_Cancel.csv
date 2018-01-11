@@ -1,0 +1,154 @@
+id_country,country,month,price
+AUS,Australia,2,67.95
+AUS,Australia,3,168.7
+AUS,Australia,4,438.2
+AUS,Australia,5,9.9
+AUS,Australia,6,23
+AUS,Australia,7,196.81
+AUS,Australia,9,75
+AUS,Australia,11,436.73
+AUS,Australia,12,27.75
+AUT,Austria,6,24.2
+AUT,Austria,12,20.16
+BHR,Bahrain,1,205.74
+BEL,Belgium,1,46.15
+BEL,Belgium,2,19.75
+BEL,Belgium,3,18.4
+BEL,Belgium,4,35.33
+BEL,Belgium,5,5.4
+BEL,Belgium,6,1.65
+BEL,Belgium,7,1.95
+BEL,Belgium,8,17.9
+BEL,Belgium,9,10.2
+BEL,Belgium,10,34
+BEL,Belgium,11,86.35
+NULL,Channel Islands,1,30.5
+NULL,Channel Islands,5,303.45
+NULL,Channel Islands,8,4.25
+NULL,Channel Islands,9,2.1
+NULL,Channel Islands,11,19.6
+CYN,Cyprus,2,320.69
+CYN,Cyprus,4,35.8
+CYN,Cyprus,10,196.35
+CZE,Czech Republic,4,57.51
+CZE,Czech Republic,11,61.51
+DNK,Denmark,8,134.55
+DNK,Denmark,10,52.65
+NULL,EIRE,1,247.67
+NULL,EIRE,2,2574.6
+NULL,EIRE,3,3414.28
+NULL,EIRE,5,87.41
+NULL,EIRE,6,4803.36
+NULL,EIRE,7,49.2
+NULL,EIRE,8,6196.28
+NULL,EIRE,9,447.5
+NULL,EIRE,10,1010.3
+NULL,EIRE,11,325.38
+NULL,EIRE,12,1003.31
+NULL,European Community,6,8.5
+FIN,Finland,3,12.2
+FIN,Finland,4,62.11
+FIN,Finland,8,4.95
+FIN,Finland,10,18
+FIN,Finland,11,120
+FRA,France,1,237.05
+FRA,France,2,77.05
+FRA,France,3,72.65
+FRA,France,4,1334.4
+FRA,France,5,87.8
+FRA,France,6,356.54
+FRA,France,7,111.2
+FRA,France,8,21.7
+FRA,France,9,229.17
+FRA,France,10,8453.41
+FRA,France,11,1061.2
+FRA,France,12,40.95
+DEU,Germany,1,459.41
+DEU,Germany,2,611.81
+DEU,Germany,3,222.67
+DEU,Germany,4,352.17
+DEU,Germany,5,179.85
+DEU,Germany,6,193.08
+DEU,Germany,7,719.32
+DEU,Germany,8,197.12
+DEU,Germany,9,370.91
+DEU,Germany,10,1024.15
+DEU,Germany,11,1980.67
+DEU,Germany,12,678.3
+GRC,Greece,7,50
+HKG,Hong Kong,3,2583.76
+HKG,Hong Kong,9,2653.95
+HKG,Hong Kong,10,10.95
+HKG,Hong Kong,11,326.1
+ISR,Israel,12,227.44
+ITA,Italy,1,41.15
+ITA,Italy,2,4.5
+ITA,Italy,3,27.9
+ITA,Italy,6,39.8
+ITA,Italy,8,56.15
+ITA,Italy,10,78.9
+ITA,Italy,11,327.33
+ITA,Italy,12,17
+JPN,Japan,1,109.8
+JPN,Japan,3,122.56
+JPN,Japan,4,1676.67
+JPN,Japan,8,49.79
+NULL,Malta,6,12.75
+NULL,Malta,8,15.75
+NULL,Malta,11,160.81
+NLD,Netherlands,2,79.8
+NLD,Netherlands,6,15
+NLD,Netherlands,8,672
+NLD,Netherlands,11,18
+NOR,Norway,3,960.63
+NOR,Norway,8,41.35
+POL,Poland,3,14.39
+POL,Poland,6,78.91
+POL,Poland,7,8.85
+POL,Poland,11,19.36
+PRT,Portugal,1,57.6
+PRT,Portugal,5,3614.4
+PRT,Portugal,6,4.95
+PRT,Portugal,8,15
+PRT,Portugal,10,622.04
+PRT,Portugal,12,59.85
+SAU,Saudi Arabia,3,14.75
+SGP,Singapore,4,6090.84
+SGP,Singapore,10,6068.06
+ESP,Spain,1,2907.55
+ESP,Spain,2,20.8
+ESP,Spain,3,36.5
+ESP,Spain,6,0.77
+ESP,Spain,7,46.75
+ESP,Spain,8,16.5
+ESP,Spain,9,25.5
+ESP,Spain,10,3558.29
+ESP,Spain,11,145.09
+SWE,Sweden,1,40
+SWE,Sweden,3,180
+SWE,Sweden,5,17
+SWE,Sweden,8,9.9
+SWE,Sweden,11,109.52
+SWE,Sweden,12,1188
+CHE,Switzerland,2,12.25
+CHE,Switzerland,4,254.75
+CHE,Switzerland,5,42.8
+CHE,Switzerland,6,21.95
+CHE,Switzerland,7,222
+CHE,Switzerland,8,87.7
+CHE,Switzerland,9,29.9
+CHE,Switzerland,10,31.2
+CHE,Switzerland,11,2
+GBR,United Kingdom,1,126981.68
+GBR,United Kingdom,2,21780.04
+GBR,United Kingdom,3,26522.89
+GBR,United Kingdom,4,34263.72
+GBR,United Kingdom,5,42854.5
+GBR,United Kingdom,6,65032.32
+GBR,United Kingdom,7,36515
+GBR,United Kingdom,8,46792.86
+GBR,United Kingdom,9,35058.32
+GBR,United Kingdom,10,61536.82
+GBR,United Kingdom,11,42540.43
+GBR,United Kingdom,12,71526.36
+USA,USA,10,1579.51

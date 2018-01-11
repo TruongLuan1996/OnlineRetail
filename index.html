@@ -5,6 +5,48 @@
         <link href="css/d3.geomap.css" rel="stylesheet">
         <script src="vendor/d3.geomap.dependencies.min.js"></script>
         <script src="js/d3.geomap.js"></script>
+        <style>
+            .countryName{
+              font-size: 20px;
+              font-weight: bold;
+            font-family: arial;
+            font-style: italic;
+            }
+            .aster-score { 
+                line-height: 1;
+                font-weight: bold;
+                font-size: 500%;
+                }
+
+                .d3-tip {
+                line-height: 1;
+                font-weight: bold;
+                padding: 12px;
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                border-radius: 2px;
+                }
+
+                /* Creates a small triangle extender for the tooltip */
+                .d3-tip:after {
+                box-sizing: border-box;
+                display: inline;
+                font-size: 10px;
+                width: 100%;
+                line-height: 1;
+                color: rgba(0, 0, 0, 0.8);
+                content: "\25BC";
+                position: absolute;
+                text-align: center;
+                }
+
+                /* Style northward tooltips differently */
+                .d3-tip.n:after {
+                margin: -1px 0 0 0;
+                top: 100%;
+                left: 0;
+                }
+          </style>
     </head>
     <body>
         <div class="radio-inline">
@@ -28,8 +70,9 @@
         </div>
         
     </body>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script type="text/javascript">
-    //document.querySelector('input[name="optionsRadios"]:checked').value;
+   document.getElementById("optionsRadios1").checked=true
     setOneMap();
     function setOneMap(){
         var format = function(d) {

@@ -377,8 +377,14 @@ var Geomap = (function () {
                             
                 var color = d3.scale.category20();
 
+                var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .offset([0, 0])
+                .html(function(d) {
+                  return "Luan" + ": <span style='color:orangered'>" + "10" + "</span>";
+                });
 
-
+                this.svg.call(tip);
                 d3.csv("./data/sumPriceCountry_Month.csv", function(error, datas) {
                     console.log(datas)
                     var pieData=[0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -418,13 +424,21 @@ var Geomap = (function () {
                         points.append("circle")
                             .attr("r", 3)
                             .style("fill", "red");
-                        
+                        points.append("text")
+                                .attr("class","countryName")
+                                .text(d.properties.name)
+                                .attr("dx",120)
+                                .attr("dy",5)
+                                .style("fill","blue");
+                        var test=[{"id":"FIS","order":1.1,"score":59,"weight":0.5,"color":"#9E0041","label":"Fisheries","width":0.5},{"id":"MAR","order":1.3,"score":24,"weight":0.5,"color":"#C32F4B","label":"Mariculture","width":0.5},{"id":"AO","order":2,"score":98,"weight":1,"color":"#E1514B","label":"Artisanal Fishing Opportunities","width":1},{"id":"NP","order":3,"score":60,"weight":1,"color":"#F47245","label":"Natural Products","width":1},{"id":"CS","order":4,"score":74,"weight":1,"color":"#FB9F59","label":"Carbon Storage","width":1},{"id":"CP","order":5,"score":70,"weight":1,"color":"#FEC574","label":"Coastal Protection","width":1},{"id":"TR","order":6,"score":42,"weight":1,"color":"#FAE38C","label":"Tourism &  Recreation","width":1},{"id":"LIV","order":7.1,"score":77,"weight":0.5,"color":"#EAF195","label":"Livelihoods","width":0.5},{"id":"ECO","order":7.3,"score":88,"weight":0.5,"color":"#C7E89E","label":"Economies","width":0.5},{"id":"ICO","order":8.1,"score":60,"weight":0.5,"color":"#9CD6A4","label":"Iconic Species","width":0.5},{"id":"LSP","order":8.3,"score":65,"weight":0.5,"color":"#6CC4A4","label":"Lasting Special Places","width":0.5},{"id":"CW","order":9,"score":71,"weight":1,"color":"#4D9DB4","label":"Clean Waters","width":1},{"id":"HAB","order":10.1,"score":88,"weight":0.5,"color":"#4776B4","label":"Habitats","width":0.5},{"id":"SPP","order":10.3,"score":83,"weight":0.5,"color":"#5E4EA1","label":"Species","width":0.5}];
                         // Select each g element we created, and fill it with pie chart:
                         var pies = points.selectAll(".pies")
                             .data(pie(pieData)) // I'm unsure why I need the leading 0.
                             .enter()
                             .append('g')
-                            .attr('class','arc');
+                            .attr('class','arc')
+                            .on('mouseover', tip.show)
+                            .on('mouseout', tip.hide);
                         
                         pies.append("path")
                         .attr('d',arc)

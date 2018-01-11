@@ -79,15 +79,7 @@
             .legend(true)
             .unitId('id');
 
-        d3.csv('data/sumPriceCountry.csv', function(error, data) {
-            d3.select('#map1')
-                .datum(data)
-                .call(map.draw, map);
-
-    
-        });
-
-        var map2 = d3.geomap.choropleth()
+            var map2 = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')
             .width(width)
             .height(height)
@@ -100,12 +92,36 @@
             .unitId('id');
 
         d3.csv('data/sumPriceCountry.csv', function(error, data) {
-            d3.select('#map2')
+            d3.select('#map1')
                 .datum(data)
-                .call(map2.draw, map2);
+                .call(map.draw, map);
+            
+            d3.select('#map2')
+            .datum(data)
+            .call(map2.draw, map2);
 
     
         });
+
+        // var map2 = d3.geomap.choropleth()
+        //     .geofile('topojson/world/countries.json')
+        //     .width(width)
+        //     .height(height)
+        //     .colors(colorbrewer[scheme][steps])
+        //     .column('price')
+        //     .scale([width / 5.8])
+        //     .translate([width / 2, height / 2])
+        //     .format(format)
+        //     .legend(true)
+        //     .unitId('id');
+
+        // d3.csv('data/sumPriceCountry.csv', function(error, data) {
+        //     d3.select('#map2')
+        //         .datum(data)
+        //         .call(map2.draw, map2);
+
+    
+        // });
     }
 
     function radioChange(){

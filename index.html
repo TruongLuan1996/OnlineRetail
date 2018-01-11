@@ -102,9 +102,17 @@
    document.getElementById("statusmap1").checked=true
     setOneMap();
     function setOneMap(){
-        var format = function(d) {
-                d = d / 1000;
-                return d3.format(',.02f')(d) + 'T';
+        var format;
+        if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
+            format = function(d) {
+                    d = d / 1000;
+                    return d3.format(',.02f')(d) + 'T';
+                }
+            }
+            else{
+                format = function(d) {
+                    return d3.format(',.02f')(d);
+                }
             }
             var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
             var scheme = 'Reds' || 'YlGnBu';
@@ -114,7 +122,7 @@
             .width(width)
             .height(height)
             .colors(colorbrewer[scheme][steps])
-            .column('price')
+            .column('Price')
             .scale([width / 5.8])
             .translate([width / 2, height / 2])
             .format(format)
@@ -136,9 +144,17 @@
             }
     }
     function setTwoMap(){
-        var format = function(d) {
-                d = d / 1000;
-                return d3.format(',.02f')(d) + 'T';
+        var format;
+        if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
+            format = function(d) {
+                    d = d / 1000;
+                    return d3.format(',.02f')(d) + 'T';
+                }
+            }
+            else{
+                format = function(d) {
+                    return d3.format(',.02f')(d);
+                }
             }
             var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
             var scheme = 'Reds' || 'YlGnBu';
@@ -148,7 +164,7 @@
             .width(width)
             .height(height)
             .colors(colorbrewer[scheme][steps])
-            .column('price')
+            .column('Price')
             .scale([width / 5.8])
             .translate([width / 2, height / 2])
             .format(format)
@@ -160,7 +176,7 @@
             .width(width)
             .height(height)
             .colors(colorbrewer[scheme][steps])
-            .column('price')
+            .column('Price')
             .scale([width / 5.8])
             .translate([width / 2, height / 2])
             .format(format)

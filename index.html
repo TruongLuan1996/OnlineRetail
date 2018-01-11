@@ -12,6 +12,12 @@
             font-family: arial;
             font-style: italic;
             }
+            .pieArc:hover {
+                    fill: #F5F5F5;
+            }
+            .unit:hover {
+                    fill: #ADFF2F!important;
+            }
             .aster-score { 
                 line-height: 1;
                 font-weight: bold;
@@ -98,8 +104,6 @@
             d3.select('#map')
                 .datum(data)
                 .call(map.draw, map);
-
-    
         });
     }
     function setTwoMap(){

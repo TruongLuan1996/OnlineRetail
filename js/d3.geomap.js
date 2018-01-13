@@ -385,16 +385,29 @@ var Geomap = (function () {
                                 .value(function(d) { return d.sumPrice; });
                                 
                     var color = d3.scale.category20();
-
-                    var tip = d3.tip()
-                    .attr('class', 'd3-tip')
-                    .offset([0, 0])
-                    .html(function(d) {
-                        var html="Month" + ": <span style='color:orangered'>" + d.data.month + "</span><br>"
-                                +"Price" + ": <span style='color:orangered'>" + d.data.sumPrice + "</span>";
-                    return html;
-
-                    });
+                    var tip;
+                    if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
+                        tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .offset([0, 0])
+                        .html(function(d) {
+                            var html="Month" + ": <span style='color:orangered'>" + d.data.month + "</span><br>"
+                                    +"Price" + ": <span style='color:orangered'>" + d.data.sumPrice + "</span><br>"
+                                    +"Sản phẩm bán nhiều nhất" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
+                        return html;
+                        });
+                    }
+                    else{
+                        tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .offset([0, 0])
+                        .html(function(d) {
+                            var html="Month" + ": <span style='color:orangered'>" + d.data.month + "</span><br>"
+                            +"Price" + ": <span style='color:orangered'>" + d.data.sumPrice + "</span><br>"
+                            +"Sản phẩm hủy nhiều nhất" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
+                        return html;
+                        });
+                    }
                     var flag=false;
                     this.svg.call(tip);
                     if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
@@ -404,8 +417,8 @@ var Geomap = (function () {
                                 var temp={
                                     month: 0,
                                     sumPrice: 0,
-                                    stokeCode: '',
-                                    description: ''
+                                    description: '',
+                                    quantity: 0
                                 }
                                 pieData.push(temp)
                             }
@@ -414,6 +427,8 @@ var Geomap = (function () {
                                     flag=true;
                                     pieData[data.month].sumPrice=parseFloat(data.price);
                                     pieData[data.month].month=data.month;
+                                    pieData[data.month].description=data.description;
+                                    pieData[data.month].quantity=data.quantity;
                                 }
                             });
                             if(!flag){
@@ -473,8 +488,8 @@ var Geomap = (function () {
                                 var temp={
                                     month: 0,
                                     sumPrice: 0,
-                                    stokeCode: '',
-                                    description: ''
+                                    description: '',
+                                    quantity: 0
                                 }
                                 pieData.push(temp)
                             }
@@ -484,6 +499,8 @@ var Geomap = (function () {
                                     flag=true;
                                     pieData[data.month].sumPrice=parseFloat(data.price);
                                     pieData[data.month].month=data.month;
+                                    pieData[data.month].description=data.description;
+                                    pieData[data.month].quantity=data.quantity;
                                 }
                             });
                             if(!flag){

@@ -337,7 +337,7 @@ var Geomap = (function () {
                 return d.properties.name;
             },
             width: null,
-            zoomFactor: 4
+            zoomFactor: 5
         };
 
         // Setup methods to access properties.
@@ -408,7 +408,7 @@ var Geomap = (function () {
                             }
                         });
                         if(!flag){
-                            return;
+                            return false;
                         }
                             var projection=_this.properties.projection();
                             var points;
@@ -422,7 +422,7 @@ var Geomap = (function () {
                             }
                             else{
                                 points = g2.append("g")
-                                .attr("transform","translate(280,160)" )
+                                .attr("transform","translate(330,160)" )
                                 //.attr("id", function (d,i) { return "chart"+i; })
                                 .append("g").attr("class","pies");
                             }
@@ -478,7 +478,7 @@ var Geomap = (function () {
                             }
                         });
                         if(!flag){
-                            return;
+                            return false;
                         }
                         var projection=_this.properties.projection();
                         var points;
@@ -492,7 +492,7 @@ var Geomap = (function () {
                         }
                         else{
                             points = g2.append("g")
-                            .attr("transform","translate(280,160)" )
+                            .attr("transform","translate(330,160)" )
                             //.attr("id", function (d,i) { return "chart"+i; })
                             .append("g").attr("class","pies");
                         }
@@ -536,7 +536,7 @@ var Geomap = (function () {
                 return _ === _this._.centered;
                
             });
-            this.svg.selectAll('g.zoom').transition().duration(750).attr('transform', 'translate(' + x0 + ', ' + y0 + ')scale(' + k + ')translate(-' + x + ', -' + y + ')');
+            this.svg.selectAll('g.zoom').transition().duration(1000).attr('transform', 'translate(' + x0 + ', ' + y0 + ')scale(' + k + ')translate(-' + x + ', -' + y + ')');
             
         }
 

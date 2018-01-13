@@ -114,8 +114,8 @@
                     return d3.format(',.02f')(d);
                 }
             }
-            var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
-            var scheme = 'Reds' || 'YlGnBu';
+            var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
+            var scheme = 'RdBu' || 'YlGnBu';
             var width=1336, height=650;
             var map = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')
@@ -156,8 +156,8 @@
                     return d3.format(',.02f')(d);
                 }
             }
-            var steps = parseInt('9' || 9, 10); // avoid errors when steps is not set
-            var scheme = 'Reds' || 'YlGnBu';
+            var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
+            var scheme = 'RdBu' || 'YlGnBu';
             var width=650, height=650;
             var map = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')

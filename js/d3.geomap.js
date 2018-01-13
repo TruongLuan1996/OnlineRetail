@@ -350,13 +350,13 @@ var Geomap = (function () {
         key: 'clicked',
         value: function clicked(d) {
             var _this = this;
-                     
+                    
             var k = 1,
                 x0 = this.properties.width / 2,
                 y0 = this.properties.height / 2,
                 x = x0,
                 y = y0;
-
+                this.svg.selectAll('.active').style('stroke','#000');
             if (d && d.hasOwnProperty('geometry') && this._.centered !== d) {
                 var centroid = this.path.centroid(d);
                 x = centroid[0];
@@ -386,7 +386,7 @@ var Geomap = (function () {
                   return html;
 
                 });
-
+                var flag=false;
                 this.svg.call(tip);
                 if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
                     d3.csv("./data/sumPriceCountry_Month.csv", function(error, datas) {
@@ -402,10 +402,14 @@ var Geomap = (function () {
                         }
                         datas.forEach(data=>{
                             if(d.id===data.id_country){
+                                flag=true;
                                 pieData[data.month].sumPrice=parseFloat(data.price);
                                 pieData[data.month].month=data.month;
                             }
                         });
+                        if(!flag){
+                            return;
+                        }
                             var projection=_this.properties.projection();
                             var points;
                             if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
@@ -466,10 +470,14 @@ var Geomap = (function () {
                         console.log(d.id)
                         datas.forEach(data=>{
                             if(d.id===data.id_country){
+                                flag=true;
                                 pieData[data.month].sumPrice=parseFloat(data.price);
                                 pieData[data.month].month=data.month;
                             }
                         });
+                        if(!flag){
+                            return;
+                        }
                         var projection=_this.properties.projection();
                         var points;
                         if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
@@ -519,12 +527,11 @@ var Geomap = (function () {
                 this._.centered = null;
                 this.svg.selectAll(".chart").remove();
             }
-
             this.svg.selectAll('path.unit').classed('active', this._.centered && function (_) {
+                _this.svg.selectAll('.unit-'+d.id).style('stroke','red');
                 return _ === _this._.centered;
                
             });
-
             this.svg.selectAll('g.zoom').transition().duration(750).attr('transform', 'translate(' + x0 + ', ' + y0 + ')scale(' + k + ')translate(-' + x + ', -' + y + ')');
             
         }

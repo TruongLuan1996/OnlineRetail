@@ -385,6 +385,7 @@ var Geomap = (function () {
                                 .value(function(d) { return d.sumPrice; });
                                 
                     var color = d3.scale.category20();
+                    var pieColor=["","#1f77b4","#aec7e8","#ff7f0e","#ffbb78","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5","#8c564b","#c49c94"]
                     var tip;
                     if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
                         tip = d3.tip()
@@ -413,22 +414,16 @@ var Geomap = (function () {
                     if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
                         d3.csv("./data/sumPriceCountry_Month.csv", function(error, datas) {
                             var pieData=[];
-                            for(var i=0;i<13;i++){
-                                var temp={
-                                    month: 0,
-                                    sumPrice: 0,
-                                    description: '',
-                                    quantity: 0
-                                }
-                                pieData.push(temp)
-                            }
                             datas.forEach(data=>{
                                 if(d.id===data.id_country){
                                     flag=true;
-                                    pieData[data.month].sumPrice=parseFloat(data.price);
-                                    pieData[data.month].month=data.month;
-                                    pieData[data.month].description=data.description;
-                                    pieData[data.month].quantity=data.quantity;
+                                    var temp={
+                                            month: data.month,
+                                            sumPrice: parseFloat(data.price),
+                                            description: data.description,
+                                            quantity: data.quantity
+                                        };
+                                    pieData.push(temp);
                                 }
                             });
                             if(!flag){
@@ -475,14 +470,14 @@ var Geomap = (function () {
                                 .attr('d',arc)
                                 .attr('class','pieArc')
                                 .attr("fill",function(d,i){
-                                    return color(i);      
+                                    //return color(parseInt(d.data.month)); 
+                                    return pieColor[parseInt(d.data.month)];
                                 });
                             
                         });
                     }
                     else{
                         d3.csv("./data/sumPriceCountry_Month_Cancel.csv", function(error, datas) {
-                            console.log(datas)
                             var pieData=[];
                             for(var i=0;i<13;i++){
                                 var temp={
@@ -493,14 +488,16 @@ var Geomap = (function () {
                                 }
                                 pieData.push(temp)
                             }
-                            console.log(d.id)
                             datas.forEach(data=>{
                                 if(d.id===data.id_country){
                                     flag=true;
-                                    pieData[data.month].sumPrice=parseFloat(data.price);
-                                    pieData[data.month].month=data.month;
-                                    pieData[data.month].description=data.description;
-                                    pieData[data.month].quantity=data.quantity;
+                                    var temp={
+                                        month: data.month,
+                                        sumPrice: parseFloat(data.price),
+                                        description: data.description,
+                                        quantity: data.quantity
+                                    };
+                                     pieData.push(temp);
                                 }
                             });
                             if(!flag){
@@ -547,7 +544,8 @@ var Geomap = (function () {
                             .attr('d',arc)
                             .attr('class','pieArc')
                             .attr("fill",function(d,i){
-                                return color(i);      
+                                //return color(i); 
+                                return pieColor[parseInt(d.data.month)];     
                             });
                             
                         });

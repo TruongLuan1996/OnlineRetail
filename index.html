@@ -12,15 +12,21 @@
             font-family: arial;
             font-style: italic;
             }
-            .pieArc:hover {
-                    stroke: #4B0082;
-                    stroke-width: 1px;
+            path.pieArc:hover {
+                    stroke: rgb(46, 49, 16) !important;
+                    /* fill: #F5F5F5; */
+            }
+            .pieArc {
+                    stroke: rgb(245, 243, 247) !important;
+                    stroke-width: 2px;
                     /* fill: #F5F5F5; */
             }
             .unit:hover {
                 stroke: #ADFF2F!important;
+                stroke-width: 1px;
                     /* fill: #ADFF2F!important; */
             }
+            
             .aster-score { 
                 line-height: 1;
                 font-weight: bold;
@@ -54,6 +60,9 @@
                 margin: -1px 0 0 0;
                 top: 100%;
                 left: 0;
+                }
+                #map .background, #map1 .background, #map2 .background {
+                    fill: #475557 !important;
                 }
           </style>
     </head>
@@ -118,7 +127,7 @@
                 }
             }
             var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
-            var scheme = 'RdBu' || 'YlGnBu';
+            var scheme =  'RdYlBu';
             var width=1336, height=650;
             var map = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')

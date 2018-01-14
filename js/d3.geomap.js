@@ -392,8 +392,8 @@ var Geomap = (function () {
                         .offset([0, 0])
                         .html(function(d) {
                             var html="Month" + ": <span style='color:orangered'>" + d.data.month + "</span><br>"
-                                    +"Price" + ": <span style='color:orangered'>" + d.data.sumPrice + "</span><br>"
-                                    +"Sản phẩm bán nhiều nhất" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
+                                    +"Gross revenue" + ": <span style='color:orangered'>$" + d.data.sumPrice + "</span><br>"
+                                    +"Best seller" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
                         return html;
                         });
                     }
@@ -403,8 +403,8 @@ var Geomap = (function () {
                         .offset([0, 0])
                         .html(function(d) {
                             var html="Month" + ": <span style='color:orangered'>" + d.data.month + "</span><br>"
-                            +"Price" + ": <span style='color:orangered'>" + d.data.sumPrice + "</span><br>"
-                            +"Sản phẩm hủy nhiều nhất" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
+                            +"Gross revenue" + ": <span style='color:orangered'>$" + d.data.sumPrice + "</span><br>"
+                            +"Best seller" + ": <span style='color:orangered'>" + d.data.description + "</span><br>";
                         return html;
                         });
                     }
@@ -459,7 +459,7 @@ var Geomap = (function () {
                                         .text(d.properties.name)
                                         .attr("dx",120)
                                         .attr("dy",5)
-                                        .style("fill","blue");
+                                        .style("fill","black");
                                 var test=[{"id":"FIS","order":1.1,"score":59,"weight":0.5,"color":"#9E0041","label":"Fisheries","width":0.5},{"id":"MAR","order":1.3,"score":24,"weight":0.5,"color":"#C32F4B","label":"Mariculture","width":0.5},{"id":"AO","order":2,"score":98,"weight":1,"color":"#E1514B","label":"Artisanal Fishing Opportunities","width":1},{"id":"NP","order":3,"score":60,"weight":1,"color":"#F47245","label":"Natural Products","width":1},{"id":"CS","order":4,"score":74,"weight":1,"color":"#FB9F59","label":"Carbon Storage","width":1},{"id":"CP","order":5,"score":70,"weight":1,"color":"#FEC574","label":"Coastal Protection","width":1},{"id":"TR","order":6,"score":42,"weight":1,"color":"#FAE38C","label":"Tourism &  Recreation","width":1},{"id":"LIV","order":7.1,"score":77,"weight":0.5,"color":"#EAF195","label":"Livelihoods","width":0.5},{"id":"ECO","order":7.3,"score":88,"weight":0.5,"color":"#C7E89E","label":"Economies","width":0.5},{"id":"ICO","order":8.1,"score":60,"weight":0.5,"color":"#9CD6A4","label":"Iconic Species","width":0.5},{"id":"LSP","order":8.3,"score":65,"weight":0.5,"color":"#6CC4A4","label":"Lasting Special Places","width":0.5},{"id":"CW","order":9,"score":71,"weight":1,"color":"#4D9DB4","label":"Clean Waters","width":1},{"id":"HAB","order":10.1,"score":88,"weight":0.5,"color":"#4776B4","label":"Habitats","width":0.5},{"id":"SPP","order":10.3,"score":83,"weight":0.5,"color":"#5E4EA1","label":"Species","width":0.5}];
                                 // Select each g element we created, and fill it with pie chart:
                                 var pies = points.selectAll(".pies")
@@ -531,7 +531,7 @@ var Geomap = (function () {
                                     .text(d.properties.name)
                                     .attr("dx",120)
                                     .attr("dy",5)
-                                    .style("fill","blue");
+                                    .style("fill","black");
                             var test=[{"id":"FIS","order":1.1,"score":59,"weight":0.5,"color":"#9E0041","label":"Fisheries","width":0.5},{"id":"MAR","order":1.3,"score":24,"weight":0.5,"color":"#C32F4B","label":"Mariculture","width":0.5},{"id":"AO","order":2,"score":98,"weight":1,"color":"#E1514B","label":"Artisanal Fishing Opportunities","width":1},{"id":"NP","order":3,"score":60,"weight":1,"color":"#F47245","label":"Natural Products","width":1},{"id":"CS","order":4,"score":74,"weight":1,"color":"#FB9F59","label":"Carbon Storage","width":1},{"id":"CP","order":5,"score":70,"weight":1,"color":"#FEC574","label":"Coastal Protection","width":1},{"id":"TR","order":6,"score":42,"weight":1,"color":"#FAE38C","label":"Tourism &  Recreation","width":1},{"id":"LIV","order":7.1,"score":77,"weight":0.5,"color":"#EAF195","label":"Livelihoods","width":0.5},{"id":"ECO","order":7.3,"score":88,"weight":0.5,"color":"#C7E89E","label":"Economies","width":0.5},{"id":"ICO","order":8.1,"score":60,"weight":0.5,"color":"#9CD6A4","label":"Iconic Species","width":0.5},{"id":"LSP","order":8.3,"score":65,"weight":0.5,"color":"#6CC4A4","label":"Lasting Special Places","width":0.5},{"id":"CW","order":9,"score":71,"weight":1,"color":"#4D9DB4","label":"Clean Waters","width":1},{"id":"HAB","order":10.1,"score":88,"weight":0.5,"color":"#4776B4","label":"Habitats","width":0.5},{"id":"SPP","order":10.3,"score":83,"weight":0.5,"color":"#5E4EA1","label":"Species","width":0.5}];
                             // Select each g element we created, and fill it with pie chart:
                             var pies = points.selectAll(".pies")

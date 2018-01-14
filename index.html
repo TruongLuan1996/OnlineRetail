@@ -1,135 +1,155 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-        <link href="css/d3.geomap.css" rel="stylesheet">
-        <script src="vendor/d3.geomap.dependencies.min.js"></script>
-        <script src="js/d3.geomap.js"></script>
-        <style>
-            .countryName{
-              font-size: 20px;
-              font-weight: bold;
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href="css/d3.geomap.css" rel="stylesheet">
+    <script src="vendor/d3.geomap.dependencies.min.js"></script>
+    <script src="js/d3.geomap.js"></script>
+    <style>
+        .countryName {
+            font-size: 20px;
+            font-weight: bold;
             font-family: arial;
             font-style: italic;
-            }
-            path.pieArc:hover {
-                    stroke: rgb(46, 49, 16) !important;
-                    /* fill: #F5F5F5; */
-            }
-            .pieArc {
-                    stroke: rgb(245, 243, 247) !important;
-                    stroke-width: 2px;
-                    /* fill: #F5F5F5; */
-            }
-            .unit:hover {
-                stroke: #ADFF2F!important;
-                stroke-width: 1px;
-                    /* fill: #ADFF2F!important; */
-            }
-            
-            .aster-score { 
-                line-height: 1;
-                font-weight: bold;
-                font-size: 500%;
-                }
+        }
 
-                .d3-tip {
-                line-height: 1;
-                font-weight: bold;
-                padding: 12px;
-                background: rgba(0, 0, 0, 0.8);
-                color: #fff;
-                border-radius: 2px;
-                }
+        path.pieArc:hover {
+            stroke: rgb(46, 49, 16) !important;
+            /* fill: #F5F5F5; */
+        }
 
-                /* Creates a small triangle extender for the tooltip */
-                .d3-tip:after {
-                box-sizing: border-box;
-                display: inline;
-                font-size: 10px;
-                width: 100%;
-                line-height: 1;
-                color: rgba(0, 0, 0, 0.8);
-                content: "\25BC";
-                position: absolute;
-                text-align: center;
-                }
+        .pieArc {
+            stroke: rgb(245, 243, 247) !important;
+            stroke-width: 2px;
+            /* fill: #F5F5F5; */
+        }
 
-                /* Style northward tooltips differently */
-                .d3-tip.n:after {
-                margin: -1px 0 0 0;
-                top: 100%;
-                left: 0;
-                }
-                #map .background, #map1 .background, #map2 .background {
-                    fill: #475557 !important;
-                }
-          </style>
-    </head>
-    <body>
-        <div class="row">
-                <div class="col-md-2">
-                    <div class="radio-inline">
-                            <label>
-                                <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap1" value="1" checked>
-                                Success
-                            </label>
-                        </div>
-                        <div class="radio-inline">
-                            <label>
-                                <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap2"  value="2">
-                                Cancel
-                            </label>
-                    </div>
-                </div>    
-            <div class="col-md-2">
-                    <div class="radio-inline">
-                            <label>
-                                <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap1" value="1" checked>
-                                1 Map
-                            </label>
-                        </div>
-                        <div class="radio-inline">
-                            <label>
-                                <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap2"  value="2">
-                                2 Map
-                            </label>
-                        </div>
-            </div>        
+        .unit:hover {
+            stroke: #ADFF2F!important;
+            stroke-width: 1px;
+            /* fill: #ADFF2F!important; */
+        }
+        .unit.active, .unit.active:hover {
+            stroke: rgb(231, 143, 28)!important;
+            stroke-width: 1px;
+            /* fill: #ADFF2F!important; */
+        }
+
+        .aster-score {
+            line-height: 1;
+            font-weight: bold;
+            font-size: 500%;
+        }
+
+        .d3-tip {
+            line-height: 1;
+            font-weight: bold;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 2px;
+        }
+
+        /* Creates a small triangle extender for the tooltip */
+
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.8);
+            content: "\25BC";
+            position: absolute;
+            text-align: center;
+        }
+
+        /* Style northward tooltips differently */
+
+        .d3-tip.n:after {
+            margin: -1px 0 0 0;
+            top: 100%;
+            left: 0;
+        }
+
+        #map .background,
+        #map1 .background,
+        #map2 .background {
+            fill: #475557 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row" style="text-align:center">
+        <h1>ONLINE RETAIL</h1>
+    </div>
+    <div class="row" style="text-align:center">
+        <div class="col-md-4">
+            <label>View by:</label>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap1" value="1" checked> Success order
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="statusmap" onchange="statusmapChange()" id="statusmap2" value="2"> Cancel order
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>Mode:</label>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap1" value="1" checked> Single
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="numbermap" onchange="numbermapChange()" id="numbermap2" value="2"> Compare
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div id="map" style="text-align:center"></div>
         </div>
 
-          
-        <div class="row">
-            <div id="map" class="col-md-12"></div>
-        </div>
-        <div class="row">
-            <div id="map1" class="col-md-6"></div>
-            <div id="map2" class="col-md-6"></div>
-        </div>
-        
-    </body>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-    <script type="text/javascript">
-   document.getElementById("numbermap1").checked=true
-   document.getElementById("statusmap1").checked=true
+    </div>
+    <div class="row">
+        <div id="map1" class="col-md-6"></div>
+        <div id="map2" class="col-md-6"></div>
+    </div>
+
+</body>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script type="text/javascript" src="./data/country.json"></script>
+<script type="text/javascript">
+    document.getElementById("numbermap1").checked = true
+    document.getElementById("statusmap1").checked = true
     setOneMap();
-    function setOneMap(){
+    function setOneMap() {
         var format;
-        if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
-            format = function(d) {
-                    d = d / 1000;
-                    return d3.format(',.02f')(d) + 'T';
-                }
+        if (document.querySelector('input[name="statusmap"]:checked').value === "1") {
+            format = function (d) {
+                d = d / 1000;
+                return d3.format(',.02f')(d) + 'T';
             }
-            else{
-                format = function(d) {
-                    return d3.format(',.02f')(d);
-                }
+        }
+        else {
+            format = function (d) {
+                return d3.format(',.02f')(d);
             }
-            var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
-            var scheme =  'RdYlBu';
-            var width=1336, height=650;
-            var map = d3.geomap.choropleth()
+        }
+        var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
+        var scheme = 'RdYlBu';
+        var width = 1336, height = 650;
+        var map = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')
             .width(width)
             .height(height)
@@ -140,38 +160,38 @@
             .format(format)
             .legend(true)
             .unitId('id');
-            if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
-                d3.csv('data/sumPriceCountry.csv', function(error, data) {
-                    d3.select('#map')
-                        .datum(data)
-                        .call(map.draw, map);
-                });
-            }
-            else{
-                d3.csv('data/sumPriceCountry_Cancel.csv', function(error, data) {
-                    d3.select('#map')
-                        .datum(data)
-                        .call(map.draw, map);
-                });
-            }
+        if (document.querySelector('input[name="statusmap"]:checked').value === "1") {
+            d3.csv('data/sumPriceCountry.csv', function (error, data) {
+                d3.select('#map')
+                    .datum(data)
+                    .call(map.draw, map);
+            });
+        }
+        else {
+            d3.csv('data/sumPriceCountry_Cancel.csv', function (error, data) {
+                d3.select('#map')
+                    .datum(data)
+                    .call(map.draw, map);
+            });
+        }
     }
-    function setTwoMap(){
+    function setTwoMap() {
         var format;
-        if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
-            format = function(d) {
-                    d = d / 1000;
-                    return d3.format(',.02f')(d) + 'T';
-                }
+        if (document.querySelector('input[name="statusmap"]:checked').value === "1") {
+            format = function (d) {
+                d = d / 1000;
+                return d3.format(',.02f')(d) + 'T';
             }
-            else{
-                format = function(d) {
-                    return d3.format(',.02f')(d);
-                }
+        }
+        else {
+            format = function (d) {
+                return d3.format(',.02f')(d);
             }
-            var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
-            var scheme = 'RdBu' || 'YlGnBu';
-            var width=650, height=650;
-            var map = d3.geomap.choropleth()
+        }
+        var steps = parseInt('10' || 9, 10); // avoid errors when steps is not set
+        var scheme = 'RdYlBu';
+        var width = 650, height = 650;
+        var map = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')
             .width(width)
             .height(height)
@@ -183,7 +203,7 @@
             .legend(true)
             .unitId('id');
 
-            var map2 = d3.geomap.choropleth()
+        var map2 = d3.geomap.choropleth()
             .geofile('topojson/world/countries.json')
             .width(width)
             .height(height)
@@ -194,55 +214,56 @@
             .format(format)
             .legend(true)
             .unitId('id');
-            if(document.querySelector('input[name="statusmap"]:checked').value==="1"){
-                d3.csv('data/sumPriceCountry.csv', function(error, data) {
-                    d3.select('#map1')
-                        .datum(data)
-                        .call(map.draw, map);
-                    
-                    d3.select('#map2')
+        if (document.querySelector('input[name="statusmap"]:checked').value === "1") {
+            d3.csv('data/sumPriceCountry.csv', function (error, data) {
+                d3.select('#map1')
+                    .datum(data)
+                    .call(map.draw, map);
+
+                d3.select('#map2')
                     .datum(data)
                     .call(map2.draw, map2);
 
-            
-                });
-            }
-            else{
-                d3.csv('data/sumPriceCountry_Cancel.csv', function(error, data) {
-                    d3.select('#map1')
-                        .datum(data)
-                        .call(map.draw, map);
-                    
-                    d3.select('#map2')
+
+            });
+        }
+        else {
+            d3.csv('data/sumPriceCountry_Cancel.csv', function (error, data) {
+                d3.select('#map1')
+                    .datum(data)
+                    .call(map.draw, map);
+
+                d3.select('#map2')
                     .datum(data)
                     .call(map2.draw, map2);
 
-            
-                });
-            }
+
+            });
+        }
     }
 
-    function numbermapChange(){
+    function numbermapChange() {
         d3.selectAll('svg').remove();
-        if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
+        if (document.querySelector('input[name="numbermap"]:checked').value === "1") {
             setOneMap();
         }
-        else{
+        else {
             setTwoMap();
         }
 
     }
-    function statusmapChange(){
+    function statusmapChange() {
         d3.selectAll('svg').remove();
-        if(document.querySelector('input[name="numbermap"]:checked').value==="1"){
+        if (document.querySelector('input[name="numbermap"]:checked').value === "1") {
             setOneMap();
         }
-        else{
+        else {
             setTwoMap();
         }
     }
-   
 
 
-    </script>
+
+</script>
+
 </html>
